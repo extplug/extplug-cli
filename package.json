@@ -7,7 +7,7 @@
     "extplug": "bin/extplug"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "eslint ."
   },
   "keywords": [],
   "author": "Renée Kooi <renee@kooi.me>",
