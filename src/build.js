@@ -1,4 +1,5 @@
 import * as path from 'path';
+import pify from 'pify';
 import webpack from 'webpack';
 
 function createWebpackConfig(options) {
@@ -45,7 +46,7 @@ function createWebpackConfig(options) {
     ],
 
     plugins: [
-      options.minify && new webpack.optimize.UglifyJsPlugin()
+      options.minify && new webpack.optimize.UglifyJsPlugin(),
     ].filter(Boolean),
   };
 }
@@ -57,13 +58,6 @@ export default function build({ entry, output, ...opts }) {
     ...opts,
   });
 
-  return new Promise((resolve, reject) => {
-    webpack(config, (err, stats) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve(stats);
-      }
-    });
-  });
+  const compiler = webpack(config);
+  return pify(compiler.run.bind(compiler))();
 }
