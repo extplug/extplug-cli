@@ -8,5 +8,21 @@
   },
   "keywords": [],
   "author": "Renée Kooi <renee@kooi.me>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "babel-loader": "^6.2.5",
+    "babel-preset-extplug": "^2.0.0",
+    "gulp": "^3.9.1",
+    "json-loader": "^0.5.4",
+    "tmp": "0.0.28",
+    "webpack": "^1.13.2"
+  },
+  "devDependencies": {
+    "gulp-babel": "^6.1.2",
+    "gulp-newer": "^1.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.9",
+    "through2": "^2.0.1"
+  }
 }
