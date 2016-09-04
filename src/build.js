@@ -46,17 +46,20 @@ function createWebpackConfig(options) {
   };
 }
 
-export default function build({ entry, output, ...opts }, cb) {
+export default function build({ entry, output, ...opts }) {
   const config = createWebpackConfig({
     entry,
     output,
     ...opts,
   });
-  webpack(config, err => {
-    if (err) {
-      cb(err);
-    } else {
-      cb(null);
-    }
+
+  return new Promise((resolve, reject) => {
+    webpack(config, (err, stats) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(stats);
+      }
+    });
   });
 }
