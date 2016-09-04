@@ -11,12 +11,13 @@ if (output) {
     output,
   });
 } else {
-  tmpName((err, name) => {
+  tmpName((tmpErr, name) => {
+    if (tmpErr) throw tmpErr;
     build({
       entry: path.resolve(entry),
       output: `${name}.js`,
-    }, (err, result) => {
-      if (err) throw err;
+    }, buildErr => {
+      if (buildErr) throw buildErr;
       createReadStream(`${name}.js`)
         .pipe(process.stdout)
         .on('end', () => {

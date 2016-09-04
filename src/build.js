@@ -15,7 +15,7 @@ function createWebpackConfig(options) {
           exclude: /node_modules/,
           loader: require.resolve('babel-loader'),
           query: {
-            presets: require.resolve('babel-preset-extplug')
+            presets: require.resolve('babel-preset-extplug'),
           },
         },
       ],
@@ -50,7 +50,13 @@ export default function build({ entry, output, ...opts }, cb) {
   const config = createWebpackConfig({
     entry,
     output,
-    ...opts
+    ...opts,
   });
-  webpack(config, cb);
+  webpack(config, err => {
+    if (err) {
+      cb(err);
+    } else {
+      cb(null);
+    }
+  });
 }
