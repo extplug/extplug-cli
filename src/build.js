@@ -43,6 +43,10 @@ function createWebpackConfig(options) {
         }
       },
     ],
+
+    plugins: [
+      options.minify && new webpack.optimize.UglifyJsPlugin()
+    ].filter(Boolean),
   };
 }
 
