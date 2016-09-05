@@ -21,6 +21,7 @@ extplug [options] [command]
 
 Commands:
 
+  init                               Scaffold a new plugin in the current directory.
   bundle [options] <entry> [output]  Bundle a plugin.
   watch <entry> <output>             Bundle a plugin. Rebuild automatically when source files change.
 
