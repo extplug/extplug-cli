@@ -16,12 +16,15 @@
     "babel-loader": "^6.2.5",
     "babel-preset-extplug": "^2.0.0",
     "commander": "^2.9.0",
+    "generator-extplugin": "^1.0.0",
     "gulp": "^3.9.1",
     "json-loader": "^0.5.4",
     "loud-rejection": "^1.6.0",
     "pify": "^2.3.0",
     "tmp": "0.0.28",
-    "webpack": "^1.13.2"
+    "underscore.string": "^3.3.4",
+    "webpack": "^1.13.2",
+    "yeoman-environment": "^1.6.3"
   },
   "devDependencies": {
     "babel-eslint": "^6.1.2",

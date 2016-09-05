@@ -1,11 +1,17 @@
 import 'loud-rejection/register';
 import program from 'commander';
 import { build, watch } from './';
+import init from './init';
 import { version } from '../package.json';
 
 program
   .version(version)
   .description('ExtPlug plugin development kit.');
+
+program
+  .command('init')
+  .description('Scaffold a new plugin in the current directory.')
+  .action(() => init({}));
 
 program
   .command('bundle <entry> [output]')
