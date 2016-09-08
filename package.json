@@ -40,5 +40,22 @@
     "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.9",
     "through2": "^2.0.1"
-  }
+  },
+  "bundleDependencies": [
+    "babel-loader",
+    "babel-preset-extplug",
+    "commander",
+    "css-loader",
+    "generator-extplugin",
+    "gulp",
+    "json-loader",
+    "loud-rejection",
+    "pify",
+    "postcss-cssnext",
+    "postcss-loader",
+    "tmp",
+    "underscore.string",
+    "webpack",
+    "yeoman-environment"
+  ]
 }
