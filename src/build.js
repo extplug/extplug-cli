@@ -1,6 +1,7 @@
 import * as path from 'path';
 import pify from 'pify';
 import webpack from 'webpack';
+import cssnext from 'postcss-cssnext';
 
 function createWebpackConfig(options) {
   return {
@@ -11,6 +12,13 @@ function createWebpackConfig(options) {
     module: {
       loaders: [
         { test: /\.json$/, loader: require.resolve('json-loader') },
+        {
+          test: /\.css$/,
+          loaders: [
+            require.resolve('css-loader'),
+            require.resolve('postcss-loader'),
+          ],
+        },
         {
           test: /\.js$/,
           exclude: /node_modules/,
@@ -48,6 +56,10 @@ function createWebpackConfig(options) {
     plugins: [
       options.minify && new webpack.optimize.UglifyJsPlugin(),
     ].filter(Boolean),
+
+    postcss() {
+      return [cssnext()];
+    },
   };
 }
 
