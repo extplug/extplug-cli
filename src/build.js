@@ -41,6 +41,7 @@ function createWebpackConfig(options) {
       'underscore',
       'backbone',
       'plug-modules',
+      'meld',
       'lang/Lang',
       (context, request, cb) => {
         if (/^plug\//.test(request)) {
