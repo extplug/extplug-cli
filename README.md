@@ -1,4 +1,4 @@
-# [WIP Do Not Use] extplug-cli
+# extplug-cli
 
 CLI for easily bundling ExtPlug plugins.
 
