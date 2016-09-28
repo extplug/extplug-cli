@@ -1,5 +1,4 @@
 import * as path from 'path';
-import pify from 'pify';
 import webpack from 'webpack';
 import cssnext from 'postcss-cssnext';
 
@@ -71,6 +70,15 @@ export default function build({ entry, output, ...opts }) {
     ...opts,
   });
 
-  const compiler = webpack(config);
-  return pify(compiler.run.bind(compiler))();
+  return new Promise((resolve, reject) => {
+    webpack(config).run((err, stats) => {
+      if (err) {
+        reject(err);
+      } else if (stats.compilation.errors.length > 0) {
+        reject(stats.compilation.errors[0]);
+      } else {
+        resolve(stats);
+      }
+    });
+  });
 }

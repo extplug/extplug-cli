@@ -4,6 +4,10 @@ import { build, watch } from './';
 import init from './init';
 import { version } from '../package.json';
 
+function onError(err) {
+  console.log(err.stack);
+}
+
 program
   .version(version)
   .description('ExtPlug plugin development kit.');
@@ -11,7 +15,9 @@ program
 program
   .command('init')
   .description('Scaffold a new plugin in the current directory.')
-  .action(() => init({}));
+  .action(() => {
+    init({}).catch(onError);
+  });
 
 program
   .command('bundle <entry> [output]')
@@ -22,7 +28,7 @@ program
       ...options,
       entry,
       output,
-    });
+    }).catch(onError);
   });
 
 program
