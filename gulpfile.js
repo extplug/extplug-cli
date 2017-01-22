@@ -13,7 +13,7 @@ const dest = 'lib/';
 
 gulp.task('default', ['build']);
 
-gulp.task('build', () =>
+gulp.task('build', () => (
   gulp.src(src)
     .pipe(plumber())
     .pipe(newer(dest))
@@ -24,7 +24,7 @@ gulp.task('build', () =>
     }))
     .pipe(babel())
     .pipe(gulp.dest(dest))
-);
+));
 
 gulp.task('watch', ['build'], () => {
   watch(src, () => {

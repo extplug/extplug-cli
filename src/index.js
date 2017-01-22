@@ -17,17 +17,17 @@ export function build({ entry, output, ...opts }) {
     });
   }
 
-  return pify(tmpName)().then(name =>
+  return pify(tmpName)().then(name => (
     makeBundle({
       ...opts,
       entry: path.resolve(entry),
       output: `${name}.js`,
-    }).then(() => pifyStream(
-      createReadStream(`${name}.js`).pipe(process.stdout)
-    )).then(() =>
+    }).then(() => (
+      pifyStream(createReadStream(`${name}.js`).pipe(process.stdout))
+    )).then(() => (
       pify(unlink)(`${name}.js`)
-    )
-  );
+    ))
+  ));
 }
 
 export function watch(opts) {
