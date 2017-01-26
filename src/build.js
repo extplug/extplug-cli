@@ -9,21 +9,33 @@ function createWebpackConfig(options) {
     watch: !!options.watch,
 
     module: {
-      loaders: [
-        { test: /\.json$/, loader: require.resolve('json-loader') },
+      rules: [
+        {
+          test: /\.json$/,
+          use: require.resolve('json-loader'),
+        },
         {
           test: /\.css$/,
-          loaders: [
+          use: [
             require.resolve('css-loader'),
-            require.resolve('postcss-loader'),
+            {
+              loader: require.resolve('postcss-loader'),
+              options: {
+                plugins: () => [
+                  cssnext(),
+                ],
+              },
+            },
           ],
         },
         {
           test: /\.js$/,
           exclude: /node_modules/,
-          loader: require.resolve('babel-loader'),
-          query: {
-            presets: require.resolve('babel-preset-extplug'),
+          use: {
+            loader: require.resolve('babel-loader'),
+            options: {
+              presets: [require.resolve('babel-preset-extplug')],
+            },
           },
         },
       ],
@@ -56,10 +68,6 @@ function createWebpackConfig(options) {
     plugins: [
       options.minify && new webpack.optimize.UglifyJsPlugin(),
     ].filter(Boolean),
-
-    postcss() {
-      return [cssnext()];
-    },
   };
 }
 
