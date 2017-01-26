@@ -34,7 +34,7 @@ function createWebpackConfig(options) {
           use: {
             loader: require.resolve('babel-loader'),
             options: {
-              presets: [require.resolve('babel-preset-extplug')],
+              presets: [require.resolve('../babel')],
             },
           },
         },
