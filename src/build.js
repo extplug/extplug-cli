@@ -1,8 +1,23 @@
 import * as path from 'path';
 import webpack from 'webpack';
 import cssnext from 'postcss-cssnext';
+import cssnano from 'cssnano';
 
 function createWebpackConfig(options) {
+  function postcssPlugins() {
+    if (options.minify) {
+      return [
+        cssnext({
+          features: {
+            autoprefixer: false,
+          },
+        }),
+        cssnano(),
+      ];
+    }
+    return [cssnext()];
+  }
+
   return {
     context: path.dirname(options.entry),
     entry: `./${path.basename(options.entry).replace(/\.js$/, '')}`,
@@ -20,11 +35,7 @@ function createWebpackConfig(options) {
             require.resolve('css-loader'),
             {
               loader: require.resolve('postcss-loader'),
-              options: {
-                plugins: () => [
-                  cssnext(),
-                ],
-              },
+              options: { plugins: postcssPlugins },
             },
           ],
         },
@@ -33,9 +44,7 @@ function createWebpackConfig(options) {
           exclude: /node_modules/,
           use: {
             loader: require.resolve('babel-loader'),
-            options: {
-              presets: [require.resolve('../babel')],
-            },
+            options: { presets: [require.resolve('../babel')] },
           },
         },
       ],

@@ -19,6 +19,7 @@
     "babel-preset-extplug": "^2.0.0",
     "commander": "^2.9.0",
     "css-loader": "^0.26.1",
+    "cssnano": "^3.10.0",
     "generator-extplugin": "^1.1.0",
     "gulp": "^3.9.1",
     "json-loader": "^0.5.4",
