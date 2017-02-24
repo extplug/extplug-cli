@@ -28,7 +28,16 @@ program
       ...options,
       entry,
       output,
-    }).catch(onError);
+    }).then(() => {
+      console.log('Compiled successfully.');
+    }).catch((errors) => {
+      console.log('Failed to compile.');
+      console.log();
+
+      errors.forEach((err) => {
+        console.log(err.message);
+      });
+    });
   });
 
 program

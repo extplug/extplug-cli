@@ -90,9 +90,9 @@ export default function build({ entry, output, ...opts }) {
   return new Promise((resolve, reject) => {
     webpack(config).run((err, stats) => {
       if (err) {
-        reject(err);
+        reject([err]);
       } else if (stats.compilation.errors.length > 0) {
-        reject(stats.compilation.errors[0]);
+        reject(stats.compilation.errors);
       } else {
         resolve(stats);
       }
