@@ -1,5 +1,6 @@
 import 'loud-rejection/register';
 import program from 'commander';
+import chalk from 'chalk';
 import { build, watch } from './';
 import init from './init';
 import { version } from '../package.json';
@@ -29,9 +30,9 @@ program
       entry,
       output,
     }).then(() => {
-      console.log('Compiled successfully.');
+      console.log(chalk.green('Compiled successfully.'));
     }).catch((errors) => {
-      console.log('Failed to compile.');
+      console.log(chalk.red('Failed to compile.'));
       console.log();
 
       errors.forEach((err) => {
