@@ -12,7 +12,9 @@ function createWebpackConfig(options) {
             autoprefixer: false,
           },
         }),
-        cssnano(),
+        cssnano({
+          zindex: false,
+        }),
       ];
     }
     return [cssnext()];
