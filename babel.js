@@ -4,8 +4,6 @@
 
 module.exports = {
   presets: [
-    [require.resolve('babel-preset-extplug'), {
-      amd: false,
-    }],
+    require.resolve('babel-preset-extplug'),
   ],
 };
