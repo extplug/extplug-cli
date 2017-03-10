@@ -1,9 +1,19 @@
+import { Buffer } from 'buffer';
 import * as path from 'path';
 import webpack from 'webpack';
 import cssnext from 'postcss-cssnext';
 import cssnano from 'cssnano';
 import chalk from 'chalk';
 import findBabelConfig from 'find-babel-config';
+import uuid from 'uuid';
+
+// Turn a UUID Buffer into a valid JS identifier.
+function stringifyId(id) {
+  return id.toString('base64')
+    .replace(/=+$/, '')
+    .replace(/\+/g, '$')
+    .replace(/\//g, '_');
+}
 
 function createWebpackConfig(options) {
   function postcssPlugins() {
@@ -21,6 +31,9 @@ function createWebpackConfig(options) {
     }
     return [cssnext()];
   }
+
+  const id = Buffer.alloc(16);
+  uuid.v4(null, id);
 
   const context = path.dirname(options.entry);
 
@@ -64,6 +77,7 @@ function createWebpackConfig(options) {
     output: {
       path: path.dirname(options.output),
       filename: path.basename(options.output),
+      jsonpFunction: `jsonp${stringifyId(id)}`,
       libraryTarget: 'amd',
     },
 
