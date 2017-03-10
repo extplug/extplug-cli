@@ -49,8 +49,11 @@
   "bundleDependencies": [
     "babel-loader",
     "babel-preset-extplug",
+    "chalk",
     "commander",
     "css-loader",
+    "cssnano",
+    "find-babel-config",
     "generator-extplugin",
     "gulp",
     "json-loader",
