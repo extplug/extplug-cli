@@ -2,6 +2,8 @@ import * as path from 'path';
 import webpack from 'webpack';
 import cssnext from 'postcss-cssnext';
 import cssnano from 'cssnano';
+import chalk from 'chalk';
+import findBabelConfig from 'find-babel-config';
 
 function createWebpackConfig(options) {
   function postcssPlugins() {
@@ -20,8 +22,15 @@ function createWebpackConfig(options) {
     return [cssnext()];
   }
 
+  const context = path.dirname(options.entry);
+
+  const { config } = findBabelConfig.sync(context);
+  if (config) {
+    console.log(chalk.dim('Using custom Babel configuration.'));
+  }
+
   return {
-    context: path.dirname(options.entry),
+    context,
     entry: `./${path.basename(options.entry).replace(/\.js$/, '')}`,
     watch: !!options.watch,
 
@@ -46,7 +55,7 @@ function createWebpackConfig(options) {
           exclude: /node_modules/,
           use: {
             loader: require.resolve('babel-loader'),
-            options: { presets: [require.resolve('../babel')] },
+            options: config || { presets: [require.resolve('../babel')] },
           },
         },
       ],
@@ -65,7 +74,7 @@ function createWebpackConfig(options) {
       'plug-modules',
       'meld',
       'lang/Lang',
-      (context, request, cb) => {
+      (_, request, cb) => {
         if (/^plug\//.test(request)) {
           cb(null, `amd plug-modules!${request}`);
         } else if (/^extplug\//.test(request)) {
