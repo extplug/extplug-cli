@@ -56,7 +56,10 @@ function createWebpackConfig(options) {
         {
           test: /\.css$/,
           use: [
-            require.resolve('css-loader'),
+            {
+              loader: require.resolve('css-loader'),
+              options: { importLoaders: 1 },
+            },
             {
               loader: require.resolve('postcss-loader'),
               options: { plugins: postcssPlugins },
