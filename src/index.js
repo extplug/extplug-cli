@@ -4,9 +4,10 @@ import pify from 'pify';
 import { tmpName } from 'tmp';
 import makeBundle from './build';
 
-const pifyStream = stream => new Promise((resolve, reject) => {
-  stream.on('end', resolve).on('error', reject);
-});
+const pifyStream = stream =>
+  new Promise((resolve, reject) => {
+    stream.on('end', resolve).on('error', reject);
+  });
 
 export function build({ entry, output, ...opts }) {
   if (output) {
@@ -17,17 +18,15 @@ export function build({ entry, output, ...opts }) {
     });
   }
 
-  return pify(tmpName)().then(name => (
+  return pify(tmpName)().then(name =>
     makeBundle({
       ...opts,
       entry: path.resolve(entry),
       output: `${name}.js`,
-    }).then(() => (
-      pifyStream(createReadStream(`${name}.js`).pipe(process.stdout))
-    )).then(() => (
-      pify(unlink)(`${name}.js`)
-    ))
-  ));
+    })
+      .then(() =>
+        pifyStream(createReadStream(`${name}.js`).pipe(process.stdout)))
+      .then(() => pify(unlink)(`${name}.js`)));
 }
 
 export function watch(opts) {

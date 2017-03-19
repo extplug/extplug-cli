@@ -29,16 +29,18 @@ program
       ...options,
       entry,
       output,
-    }).then(() => {
-      console.log(chalk.green('Compiled successfully.'));
-    }).catch((errors) => {
-      console.log(chalk.red('Failed to compile.'));
-      console.log();
+    })
+      .then(() => {
+        console.log(chalk.green('Compiled successfully.'));
+      })
+      .catch((errors) => {
+        console.log(chalk.red('Failed to compile.'));
+        console.log();
 
-      errors.forEach((err) => {
-        console.log(err.message);
+        errors.forEach((err) => {
+          console.log(err.message);
+        });
       });
-    });
   });
 
 program

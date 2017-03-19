@@ -9,7 +9,8 @@ import uuid from 'uuid';
 
 // Turn a UUID Buffer into a valid JS identifier.
 function stringifyId(id) {
-  return id.toString('base64')
+  return id
+    .toString('base64')
     .replace(/=+$/, '')
     .replace(/\+/g, '$')
     .replace(/\//g, '_');
