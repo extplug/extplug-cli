@@ -1,5 +1,5 @@
 import { createReadStream, unlink } from 'fs';
-import * as path from 'path';
+import path from 'path';
 import pify from 'pify';
 import { tmpName } from 'tmp';
 import makeBundle from './build';

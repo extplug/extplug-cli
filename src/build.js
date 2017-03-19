@@ -1,5 +1,5 @@
 import { Buffer } from 'buffer';
-import * as path from 'path';
+import path from 'path';
 import webpack from 'webpack';
 import cssnext from 'postcss-cssnext';
 import cssnano from 'cssnano';
