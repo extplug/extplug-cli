@@ -1,5 +1,7 @@
 # extplug-cli
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/extplug/extplug-cli.svg)](https://greenkeeper.io/)
+
 CLI for easily bundling ExtPlug plugins.
 
 ## Installation
