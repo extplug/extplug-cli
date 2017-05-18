@@ -17,6 +17,8 @@ function stringifyId(id) {
 }
 
 function createWebpackConfig(options) {
+  const basedir = process.cwd();
+
   function postcssPlugins() {
     if (options.minify) {
       return [
@@ -36,7 +38,7 @@ function createWebpackConfig(options) {
   const id = Buffer.alloc(16);
   uuid.v4(null, id);
 
-  const context = path.dirname(options.entry);
+  const context = path.dirname(path.resolve(basedir, options.entry));
 
   const { config } = findBabelConfig.sync(context);
   if (config) {
@@ -79,7 +81,7 @@ function createWebpackConfig(options) {
     },
 
     output: {
-      path: path.dirname(options.output),
+      path: path.dirname(path.resolve(basedir, options.output)),
       filename: path.basename(options.output),
       jsonpFunction: `jsonp${stringifyId(id)}`,
       libraryTarget: 'amd',
