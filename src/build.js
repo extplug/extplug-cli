@@ -108,6 +108,7 @@ function createWebpackConfig(options) {
 
     plugins: [
       options.minify && new UglifyJsPlugin(),
+      options.minify && new webpack.optimize.ModuleConcatenationPlugin()
     ].filter(Boolean),
   };
 }
