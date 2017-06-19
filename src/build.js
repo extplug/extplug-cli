@@ -107,6 +107,9 @@ function createWebpackConfig(options) {
     ],
 
     plugins: [
+      new webpack.DefinePlugin({
+        'process.env': { NODE_ENV: options.minify ? 'production' : 'development' }
+      }),
       options.minify && new UglifyJsPlugin(),
       options.minify && new webpack.optimize.ModuleConcatenationPlugin()
     ].filter(Boolean),
