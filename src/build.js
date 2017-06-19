@@ -6,6 +6,7 @@ import cssnano from 'cssnano';
 import chalk from 'chalk';
 import findBabelConfig from 'find-babel-config';
 import uuid from 'uuid';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 // Turn a UUID Buffer into a valid JS identifier.
 function stringifyId(id) {
@@ -106,7 +107,7 @@ function createWebpackConfig(options) {
     ],
 
     plugins: [
-      options.minify && new webpack.optimize.UglifyJsPlugin(),
+      options.minify && new UglifyJsPlugin(),
     ].filter(Boolean),
   };
 }
