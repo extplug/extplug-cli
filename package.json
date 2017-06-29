@@ -31,8 +31,7 @@
     "postcss-cssnext": "^2.9.0",
     "postcss-loader": "^2.0.0",
     "tmp": "0.0.31",
-    "uglify-js": "^2.8.29",
-    "uglifyjs-webpack-plugin": "^0.4.4",
+    "uglifyjs-webpack-plugin": "^0.4.6",
     "uuid": "^3.0.1",
     "webpack": "^3.0.0",
     "yeoman-environment": "^2.0.0"
