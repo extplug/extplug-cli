@@ -16,10 +16,10 @@
   "license": "MIT",
   "dependencies": {
     "babel-core": "^6.23.1",
-    "babel-loader": "^7.0.0",
+    "babel-loader": "^7.1.1",
     "babel-preset-extplug": "^3.0.0",
-    "chalk": "^2.0.0",
-    "commander": "^2.9.0",
+    "chalk": "^2.0.1",
+    "commander": "^2.11.0",
     "css-loader": "^0.28.0",
     "cssnano": "^3.10.0",
     "find-babel-config": "^1.0.1",
@@ -28,12 +28,12 @@
     "json-loader": "^0.5.4",
     "loud-rejection": "^1.6.0",
     "pify": "^2.3.0",
-    "postcss-cssnext": "^3.0.0",
+    "postcss-cssnext": "^3.0.2",
     "postcss-loader": "^2.0.0",
     "tmp": "0.0.31",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "uuid": "^3.0.1",
-    "webpack": "^3.0.0",
+    "webpack": "^3.2.0",
     "yeoman-environment": "^2.0.0"
   },
   "devDependencies": {
