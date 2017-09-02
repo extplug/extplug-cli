@@ -4,9 +4,8 @@ const newer = require('gulp-newer');
 const plumber = require('gulp-plumber');
 const watch = require('gulp-watch');
 const through = require('through2');
-const log = require('gulp-util').log;
-const colors = require('gulp-util').colors;
-const relative = require('path').relative;
+const { log, colors } = require('gulp-util');
+const { relative } = require('path');
 
 const src = 'src/**/*.js';
 const dest = 'lib/';
