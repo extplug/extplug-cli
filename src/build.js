@@ -125,6 +125,7 @@ export default function build({ entry, output, ...opts }) {
 
   return new Promise((resolve, reject) => {
     webpack(config).run((err, stats) => {
+      /* eslint-disable prefer-promise-reject-errors */
       if (err) {
         reject([err]);
       } else if (stats.compilation.errors.length > 0) {
