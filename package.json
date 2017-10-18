@@ -1,19 +1,14 @@
 {
   "name": "extplug-cli",
+  "description": "CLI for building and bundling ExtPlug plugins.",
   "version": "1.4.0",
-  "description": "",
-  "main": "index.js",
+  "author": "Renée Kooi <renee@kooi.me>",
   "bin": {
     "extplug": "bin/extplug"
   },
-  "scripts": {
-    "build": "gulp",
-    "prepublish": "npm run build",
-    "test": "eslint ."
+  "bugs": {
+    "url": "https://github.com/extplug/extplug-cli/issues"
   },
-  "keywords": [],
-  "author": "Renée Kooi <renee@kooi.me>",
-  "license": "MIT",
   "dependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
@@ -47,5 +42,23 @@
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "through2": "^2.0.3"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "homepage": "https://github.com/extplug/extplug-cli#readme",
+  "keywords": [
+    "extplug"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/extplug/extplug-cli.git"
+  },
+  "scripts": {
+    "build": "gulp",
+    "prepublish": "npm run build",
+    "test": "eslint ."
   }
 }
